@@ -9,24 +9,38 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77b7fb23-e281-4a3e-b672-056ce827ef91" name="Changes" comment="" />
+    <list default="true" id="540a250e-965d-45c3-931e-dac160718420" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InzynieriaOprogramowania/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/KtoGdzieKiedy/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/app/src/main/java/com/example/ktogdziekiedy/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/KtoGdzieKiedy/app/src/main/java/com/example/ktogdziekiedy/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/app/src/main/java/com/example/ktogdziekiedy/MyAdapter.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/app/src/main/java/com/example/ktogdziekiedy/fragments/FirstFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/app/src/main/java/com/example/ktogdziekiedy/fragments/SecondFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/app/src/main/java/com/example/ktogdziekiedy/fragments/ThirdFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/KtoGdzieKiedy/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/app/src/main/res/layout/fragment_first.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/app/src/main/res/layout/fragment_second.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/app/src/main/res/layout/fragment_third.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/KtoGdzieKiedy/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KtoGdzieKiedy/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/KtoGdzieKiedy/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\dawwy\.android\avd\Pixel_6_Pro_API_33.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\dawwy\.android\avd\Pixel_6_API_33.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Kotlin Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,25 +48,20 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectId" id="2IDPly4oPZeOrYTxeOtqVJdtMJ3" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
+  <component name="ProjectId" id="2IlL66vipRDkKUuReCCcdADK2AP" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="cidr.known.project.marker" value="true" />
   </component>
   <component name="RunManager">
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="KtoGdzieKiedy.app.main" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -115,11 +124,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="77b7fb23-e281-4a3e-b672-056ce827ef91" name="Changes" comment="" />
-      <created>1669713335958</created>
+      <changelist id="540a250e-965d-45c3-931e-dac160718420" name="Changes" comment="" />
+      <created>1670751045196</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1669713335958</updated>
+      <updated>1670751045196</updated>
     </task>
     <servers />
   </component>
