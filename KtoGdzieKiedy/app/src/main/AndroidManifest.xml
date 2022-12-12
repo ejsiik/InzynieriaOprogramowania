@@ -13,14 +13,14 @@
         android:theme="@style/Theme.KtoGdzieKiedy"
         tools:targetApi="31" >
         <activity
-            android:name=".SecondActivity"
+            android:name=".TaskHistoryActivity"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".FirstActivity"
+            android:name=".AddTaskActivity"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"

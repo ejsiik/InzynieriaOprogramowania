@@ -26,10 +26,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     public fun openFirstActivity() {
-        startActivity(Intent(this@MainActivity, FirstActivity::class.java))
+        startActivity(Intent(this@MainActivity, AddTaskActivity::class.java))
     }
 
     public fun openSecondActivity() {
-        startActivity(Intent(this@MainActivity, SecondActivity::class.java))
+        startActivity(Intent(this@MainActivity, TaskHistoryActivity::class.java))
     }
 }
