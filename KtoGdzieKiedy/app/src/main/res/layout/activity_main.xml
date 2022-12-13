@@ -7,139 +7,177 @@
     android:background="#f3f3f3"
     tools:context=".MainActivity">
 
-    <GridLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="4dp"
+        tools:layout_editor_absoluteX="16dp"
+        android:src="@drawable/a"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="200dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        android:text="@string/hello_user"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        android:textStyle="italic"
+        android:textSize="20dp"
+        android:textColor="#000000"/>
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="384dp"
+        android:layout_height="516dp"
         android:layout_margin="10dp"
+        android:layout_marginBottom="2dp"
         android:columnCount="2"
-        android:rowCount="3">
+        android:rowCount="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
 
         <androidx.cardview.widget.CardView
-            android:layout_height="0dp"
             android:layout_width="0dp"
-            app:cardCornerRadius="15dp"
+            android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
             android:layout_margin="5dp"
+            app:cardBackgroundColor="#008577"
+            app:cardCornerRadius="15dp"
             app:cardElevation="0dp">
+
             <RelativeLayout
                 android:id="@+id/rlFirst"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <ImageView
                     android:id="@+id/ivFirst"
                     android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/a"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_height="0dp"
-            android:layout_width="0dp"
-            app:cardCornerRadius="15dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            app:cardElevation="0dp">
-            <RelativeLayout
-                android:id="@+id/rlSecond"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
-                    android:id="@+id/ivSecond"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/b"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_height="0dp"
-            android:layout_width="0dp"
-            app:cardCornerRadius="15dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            app:cardElevation="0dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/c"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_height="0dp"
-            android:layout_width="0dp"
-            app:cardCornerRadius="15dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            app:cardElevation="0dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/d"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_height="0dp"
-            android:layout_width="0dp"
-            app:cardCornerRadius="15dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            app:cardElevation="0dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/e"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_height="0dp"
-            android:layout_width="0dp"
-            app:cardCornerRadius="15dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            app:cardElevation="0dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/logout"
-                    android:layout_centerInParent="true"/>
+                    android:layout_height="250dp"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/addtask" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
                     android:layout_alignParentBottom="true"
-                    android:text="Logout" />
+                    android:layout_centerInParent="true"
+                    android:text="Add task"
+                    android:textStyle="italic"
+                    android:textSize="18dp"
+                    android:textColor="#FFFFFF"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="5dp"
+            app:cardBackgroundColor="#008577"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="0dp">
+
+            <RelativeLayout
+                android:id="@+id/rlSecond"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/ivSecond"
+                    android:layout_width="150dp"
+                    android:layout_height="250dp"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/runningtask"
+                    android:contentDescription="TODO" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/running_tasks"
+                    android:textStyle="italic"
+                    android:textSize="18dp"
+                    android:textColor="#FFFFFF"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="5dp"
+            app:cardBackgroundColor="#008577"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="250dp"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/stats"
+                    android:contentDescription="TODO"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="true"
+                    android:text="Stats"
+                    android:textStyle="italic"
+                    android:textSize="18dp"
+                    android:textColor="#FFFFFF"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="5dp"
+            app:cardBackgroundColor="#008577"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="250dp"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/logout" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="true"
+                    android:text="Logout"
+                    android:textStyle="italic"
+                    android:textSize="18dp"
+                    android:textColor="#FFFFFF"/>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 

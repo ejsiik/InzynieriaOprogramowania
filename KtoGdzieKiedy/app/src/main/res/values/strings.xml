@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KtoGdzieKiedy</string>
+    <string name="hello_user">Hello @USER</string>
+    <string name="running_tasks">Running tasks</string>
 </resources>
