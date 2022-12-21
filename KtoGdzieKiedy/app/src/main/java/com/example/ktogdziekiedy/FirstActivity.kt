@@ -2,11 +2,15 @@ package com.example.ktogdziekiedy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.ahmadhamwi.tabsync.TabbedListMediator
 import com.example.ktogdziekiedy.adapter.CategoriesAdapter
@@ -23,30 +27,31 @@ class FirstActivity: AppCompatActivity() {
         private val categories = mutableListOf(
             Category(
                 "Phone",
-                Item("Item 1"),
-                Item("Item 2"),
-                Item("Item 3"),
-                Item("Item 4"),
-                Item("Item 5"),
-                Item("Item 6")
+                Item("LCD"),
+                Item("Battery"),
+                Item("USB port"),
+                Item("Camera"),
+                Item("Speaker"),
+                Item("Software")
             ),
             Category(
                 "Computer",
-                Item("Item 1"),
-                Item("Item 2"),
-                Item("Item 3"),
-                Item("Item 4"),
+                Item("CPU"),
+                Item("GPU"),
+                Item("RAM"),
+                Item("PSU"),
+                Item("Motherboard"),
+                Item("Software"),
+                Item("Clean up")
             ),
             Category(
                 "Console",
-                Item("Item 1"),
-                Item("Item 2"),
-                Item("Item 3"),
-                Item("Item 4"),
-                Item("Item 5"),
-                Item("Item 6"),
-                Item("Item 7"),
-                Item("Item 8"),
+                Item("Controller"),
+                Item("Disc"),
+                Item("HDMI controller"),
+                Item("PSU"),
+                Item("Clean up"),
+                Item("Software")
             ),
         )
 
@@ -58,6 +63,7 @@ class FirstActivity: AppCompatActivity() {
             initTabLayout()
             initRecycler()
             initMediator()
+
         }
 
         private fun initViews() {
@@ -82,4 +88,6 @@ class FirstActivity: AppCompatActivity() {
                 categories.indices.toList()
             ).attach()
         }
+
+
     }
