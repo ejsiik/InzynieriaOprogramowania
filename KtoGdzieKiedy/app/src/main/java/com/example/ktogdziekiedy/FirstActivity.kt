@@ -2,39 +2,95 @@ package com.example.ktogdziekiedy
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.viewpager2.widget.ViewPager2
-import com.example.ktogdziekiedy.fragments.FragmentAdapter
+import android.text.method.LinkMovementMethod
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
+import com.ahmadhamwi.tabsync.TabbedListMediator
+import com.example.ktogdziekiedy.adapter.CategoriesAdapter
+import com.example.ktogdziekiedy.model.Category
+import com.example.ktogdziekiedy.model.Item
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 
-class FirstActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+class FirstActivity: AppCompatActivity() {
 
-        setContentView(R.layout.activity_first)
-        val tabLayout = findViewById<TabLayout>(R.id.tabl)
-        val viewPager2 = findViewById<ViewPager2>(R.id.vpFirst)
+        private lateinit var tabLayout: TabLayout
+        private lateinit var recyclerView: RecyclerView
 
-        val adapter = FragmentAdapter(supportFragmentManager, lifecycle)
+        private val categories = mutableListOf(
+            Category(
+                "Phone",
+                Item("LCD"),
+                Item("Battery"),
+                Item("USB port"),
+                Item("Camera"),
+                Item("Speaker"),
+                Item("Software")
+            ),
+            Category(
+                "Computer",
+                Item("CPU"),
+                Item("GPU"),
+                Item("RAM"),
+                Item("PSU"),
+                Item("Motherboard"),
+                Item("Software"),
+                Item("Clean up")
+            ),
+            Category(
+                "Console",
+                Item("Controller"),
+                Item("Disc"),
+                Item("HDMI controller"),
+                Item("PSU"),
+                Item("Clean up"),
+                Item("Software")
+            ),
+        )
 
-        viewPager2.adapter = adapter
+        @SuppressLint("MissingInflatedId")
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_first)
 
-        TabLayoutMediator(tabLayout, viewPager2) {
-            tab, position ->
-            when (position) {
-                0 -> {
-                    tab.text = "Phone"
-                }
-                1 -> {
-                    tab.text = "Computer"
-                }
-                2 -> {
-                    tab.text = "Console"
-                }
+
+            initViews()
+            initTabLayout()
+            initRecycler()
+            initMediator()
+        }
+
+        private fun initViews() {
+            tabLayout = findViewById(R.id.tabLayout)
+            recyclerView = findViewById(R.id.recyclerView)
+        }
+
+        private fun initTabLayout() {
+            for (category in categories) {
+                tabLayout.addTab(tabLayout.newTab().setText(category.name))
             }
-        }.attach()
+        }
+
+        private fun initRecycler() {
+            recyclerView.adapter = CategoriesAdapter(this, categories)
+        }
+
+        private fun initMediator() {
+            TabbedListMediator(
+                recyclerView,
+                tabLayout,
+                categories.indices.toList()
+            ).attach()
+        }
+
 
     }
-}
