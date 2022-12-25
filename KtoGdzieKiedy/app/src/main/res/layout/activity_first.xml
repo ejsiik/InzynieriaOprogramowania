@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstActivity">
+    tools:context=".FirstActivity"
+    android:background="@color/white">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
@@ -15,7 +16,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tabIndicatorAnimationMode="elastic"
-        app:tabMode="scrollable" />
+        app:tabMode="scrollable"
+        app:tabTextColor="@color/purple_500"
+        android:backgroundTint="@color/white"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

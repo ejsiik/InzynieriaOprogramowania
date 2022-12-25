@@ -1,8 +1,10 @@
 package com.example.ktogdziekiedy
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
@@ -55,15 +57,16 @@ class FirstActivity: AppCompatActivity() {
             ),
         )
 
+        @SuppressLint("MissingInflatedId")
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_first)
+
 
             initViews()
             initTabLayout()
             initRecycler()
             initMediator()
-
         }
 
         private fun initViews() {
