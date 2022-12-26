@@ -1,187 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f3f3f3"
     tools:context=".MainActivity">
 
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="4dp"
-        tools:layout_editor_absoluteX="16dp"
-        android:src="@drawable/a"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"/>
+    <TextView
+        android:id="@+id/app_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/app_title"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="200dp"
-        android:layout_height="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
-        android:text="@string/hello_user"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        android:textStyle="italic"
-        android:textSize="20dp"
-        android:textColor="#000000"/>
+        android:id="@+id/app_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_info"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_title" />
 
-    <GridLayout
-        android:id="@+id/gridLayout"
-        android:layout_width="384dp"
-        android:layout_height="516dp"
-        android:layout_margin="10dp"
-        android:layout_marginBottom="2dp"
-        android:columnCount="2"
-        android:rowCount="3"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/login_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:text="@string/login_title"
+        android:textAlignment="center"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_info" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:hint="@string/login_hint"
+        android:minHeight="64dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_title" />
+
+    <Button
+        android:id="@+id/button_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        android:textSize="24sp"
+        android:layout_marginTop="120dp"
+        android:padding="10dp"
+        android:background="@drawable/rounded_corner_all"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            app:cardBackgroundColor="#008577"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="0dp">
-
-            <RelativeLayout
-                android:id="@+id/rlFirst"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/ivFirst"
-                    android:layout_width="150dp"
-                    android:layout_height="250dp"
-                    android:layout_centerInParent="true"
-                    android:src="@mipmap/addtask" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerInParent="true"
-                    android:text="Add task"
-                    android:textStyle="italic"
-                    android:textSize="18dp"
-                    android:textColor="#FFFFFF"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            app:cardBackgroundColor="#008577"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="0dp">
-
-            <RelativeLayout
-                android:id="@+id/rlSecond"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/ivSecond"
-                    android:layout_width="150dp"
-                    android:layout_height="250dp"
-                    android:layout_centerInParent="true"
-                    android:src="@mipmap/runningtask"
-                    android:contentDescription="TODO" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerInParent="true"
-                    android:text="@string/running_tasks"
-                    android:textStyle="italic"
-                    android:textSize="18dp"
-                    android:textColor="#FFFFFF"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            app:cardBackgroundColor="#008577"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="0dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="250dp"
-                    android:layout_centerInParent="true"
-                    android:src="@mipmap/stats"
-                    android:contentDescription="TODO"
-                    tools:ignore="ContentDescription" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerInParent="true"
-                    android:text="Stats"
-                    android:textStyle="italic"
-                    android:textSize="18dp"
-                    android:textColor="#FFFFFF"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            app:cardBackgroundColor="#008577"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="0dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="250dp"
-                    android:layout_centerInParent="true"
-                    android:src="@mipmap/logout" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerInParent="true"
-                    android:text="Logout"
-                    android:textStyle="italic"
-                    android:textSize="18dp"
-                    android:textColor="#FFFFFF"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-    </GridLayout>
-
+        app:layout_constraintTop_toBottomOf="@+id/autoTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

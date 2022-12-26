@@ -2,6 +2,25 @@
     <string name="app_name">KtoGdzieKiedy</string>
     <string name="hello_user">Hello @USER</string>
     <string name="running_tasks">Running tasks</string>
+
+    <string name="app_title">KtoGdzieKiedy</string>
+    <string name="app_info">zarządanie Twoimi zadaniami w pracy</string>
+    <string name="login_title">Wprowadź swój login</string>
+    <string name="login_hint">twój login</string>
+    <string name="submit">POTWIERDŹ</string>
+
+    <string name="pin_title">Wprowadź swój kod PIN</string>
+    <string name="pin_hint">twój PIN</string>
+    <string name="log_in">ZALOGUJ SIĘ</string>
+
+    <string name="started_title">LOGOWANIE</string>
+    <string name="selected_user">Wybrany użytkownik:</string>
+
+    <string name="raporty">RAPORTY</string>
+    <string name="raporty_opis">Sposób wyświetlenia raportów</string>
+    <string name="raporty_kategorie">WEDŁUG KATEGORII</string>
+    <string name="raporty_pracownicy">WSZYSTKIE</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
