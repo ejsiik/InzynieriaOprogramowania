@@ -1,6 +1,9 @@
 package com.example.ktogdziekiedy
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -48,8 +51,11 @@ class PanelActivity : AppCompatActivity() {
     }
 
     fun openLogoutActivity() {
-
-        startActivity(Intent(this@PanelActivity, PopupLogoutActivity::class.java))
+        val dialogBinding = layoutInflater.inflate(R.layout.activity_popup_logout, null)
+        val myDialog = Dialog(this)
+        myDialog.setContentView(dialogBinding)
+        myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        myDialog.show()
     }
 
     override fun finish() {
