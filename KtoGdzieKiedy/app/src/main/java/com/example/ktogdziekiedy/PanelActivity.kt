@@ -16,6 +16,7 @@ class PanelActivity : AppCompatActivity() {
         val imageFirst = findViewById<ImageView>(R.id.ivFirst)
         val imageSecond = findViewById<ImageView>(R.id.ivSecond)
         val imageStats = findViewById<ImageView>(R.id.ivStats)
+        val imageLogout = findViewById<ImageView>(R.id.ivLogout)
 
         imageFirst.setOnClickListener {
             openFirstActivity()
@@ -27,6 +28,10 @@ class PanelActivity : AppCompatActivity() {
 
         imageStats.setOnClickListener {
             openStatsActivity()
+        }
+
+        imageLogout.setOnClickListener {
+            openLogoutActivity()
         }
     }
 
@@ -40,6 +45,11 @@ class PanelActivity : AppCompatActivity() {
 
     fun openStatsActivity() {
         startActivity(Intent(this@PanelActivity, RaportRodzajActivity::class.java))
+    }
+
+    fun openLogoutActivity() {
+
+        startActivity(Intent(this@PanelActivity, PopupLogoutActivity::class.java))
     }
 
     override fun finish() {

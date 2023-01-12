@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@android:color/background_light">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="1dp"
+        android:background="@android:color/darker_gray">
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="20dp">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Do you want to start?" />
+            <ImageView
+                android:id="@+id/popupImg"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launcher_foreground" />
+            <TextView
+                android:id="@+id/popupTime"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="40min" />
+            <Button
+                android:id="@+id/popupAccept"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Accept" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

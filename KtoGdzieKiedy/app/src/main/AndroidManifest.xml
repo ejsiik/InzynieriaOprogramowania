@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
@@ -13,13 +12,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KtoGdzieKiedy"
         tools:targetApi="31">
-
+        <activity
+            android:name=".PopupItemActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".PopupLogoutActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".PopupActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
@@ -27,7 +46,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".PinActivity"
             android:exported="false">
@@ -35,7 +53,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".PanelActivity"
             android:exported="false">
@@ -43,7 +60,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".SecondActivity"
             android:exported="false">
@@ -51,7 +67,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".FirstActivity"
             android:exported="false">
@@ -59,7 +74,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".RaportKategoriaActivity"
             android:exported="false">
@@ -67,7 +81,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".RaportPracownikActivity"
             android:exported="false">
@@ -75,7 +88,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".RaportRodzajActivity"
             android:exported="false">
@@ -83,7 +95,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".RaportSzczegolyActivity"
             android:exported="false">
@@ -91,6 +102,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
     </application>
+
 </manifest>
