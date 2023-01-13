@@ -1,5 +1,6 @@
 package com.example.ktogdziekiedy.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,7 @@ import com.example.ktogdziekiedy.R
 import com.example.ktogdziekiedy.databinding.LayoutRaportSubItemBinding
 import com.example.ktogdziekiedy.model.SubModel
 
-class SubItemAdapter(private val subItemModel: List<SubModel>) : RecyclerView.Adapter<SubItemAdapter.ViewHolder>() {
+class SubItemAdapter(private val context: Context, private val subItemModel: List<SubModel>) : RecyclerView.Adapter<SubItemAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_raport_sub_item, parent, false)
@@ -19,7 +20,7 @@ class SubItemAdapter(private val subItemModel: List<SubModel>) : RecyclerView.Ad
         holder.binding.apply {
             val subItemM = subItemModel[position]
             subItemText.text = subItemM.subCategory
-            val subSubItemAdapter = SubSubItemAdapter(subItemM.raport)
+            val subSubItemAdapter = SubSubItemAdapter(context, subItemM.raport)
             subSubItemRv.adapter = subSubItemAdapter
 
             subItemText.setOnClickListener {
