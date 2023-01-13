@@ -1,5 +1,6 @@
 package com.example.ktogdziekiedy
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
@@ -7,6 +8,7 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import kotlinx.android.synthetic.main.activity_popup_logout.*
 
 class PanelActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,10 +58,15 @@ class PanelActivity : AppCompatActivity() {
         myDialog.setContentView(dialogBinding)
         myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         myDialog.show()
+        myDialog.popupLogout.setOnClickListener {
+            startActivity(Intent(this@PanelActivity, MainActivity::class.java))
+        }
     }
 
     override fun finish() {
         super.finish()
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
+
+    override fun onBackPressed() {}
 }

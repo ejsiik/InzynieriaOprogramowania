@@ -14,10 +14,5 @@ class PopupLogoutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_popup_logout)
-
-        val btnLogout = findViewById<Button>(R.id.popupLogout)
-        btnLogout.setOnClickListener {
-            startActivity(Intent(this@PopupLogoutActivity, MainActivity::class.java))
-        }
     }
 }
