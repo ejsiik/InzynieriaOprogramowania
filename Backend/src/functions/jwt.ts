@@ -25,7 +25,7 @@ export async function signJWT(data: any) {
 }
 
 export async function verifyJWT(token: string) {
-  return new Promise((resolve, reject) => {
+  return new Promise<any>((resolve, reject) => {
     jwt.verify(token, jwtSettings.secret, (err, result) => {
       if (err) {
         return reject(new HttpException(401, "Nieprawidłowa sesja, zaloguj się ponownie"));
