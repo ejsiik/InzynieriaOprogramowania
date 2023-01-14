@@ -2,6 +2,7 @@ package com.example.ktogdziekiedy.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,17 +25,18 @@ class ItemsAdapter(
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val itemValue = items[position].content!! //force to be non-null
+        val itemValue = items[position].content
         val viewModel = ItemsViewModel(itemValue)
+        val bundle = Bundle()
+        bundle.putString("name", itemValue)
         if (itemValue != null) {
             holder.bind(items[position])
             holder.itemView.setOnClickListener {
                 Toast.makeText(context, "Start " + itemValue + " task", Toast.LENGTH_LONG).show()
-                val intent = Intent(context, PanelActivity::class.java)
-                intent.putExtra(
-                    "itemViewModel",
-                    viewModel
-                ) //pass the viewModel object to the next activity
+                val intent = Intent(context, SecondActivity::class.java)
+                intent.putExtras(
+                    bundle
+                ) //pass the object to the next activity
                 context.startActivity(intent)
             }
         }
