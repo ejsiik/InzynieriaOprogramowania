@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ktogdziekiedy.R
-import com.example.ktogdziekiedy.RaportSzczegolyActivity
+import com.example.ktogdziekiedy.*
 import com.example.ktogdziekiedy.model.Item
 
 class ItemsAdapter(
@@ -24,12 +24,19 @@ class ItemsAdapter(
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bind(items[position])
-
-        holder.itemView.setOnClickListener {
-            val intent = Intent(context, RaportSzczegolyActivity::class.java)
-            //intent.putExtra("title", items[position])
-            context.startActivity(intent)
+        val itemValue = items[position].content!! //force to be non-null
+        val viewModel = ItemsViewModel(itemValue)
+        if (itemValue != null) {
+            holder.bind(items[position])
+            holder.itemView.setOnClickListener {
+                Toast.makeText(context, "Start " + itemValue + " task", Toast.LENGTH_LONG).show()
+                val intent = Intent(context, PanelActivity::class.java)
+                intent.putExtra(
+                    "itemViewModel",
+                    viewModel
+                ) //pass the viewModel object to the next activity
+                context.startActivity(intent)
+            }
         }
     }
 
