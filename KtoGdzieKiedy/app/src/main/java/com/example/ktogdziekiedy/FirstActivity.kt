@@ -91,6 +91,4 @@ class FirstActivity: AppCompatActivity() {
                 categories.indices.toList()
             ).attach()
         }
-
-
     }

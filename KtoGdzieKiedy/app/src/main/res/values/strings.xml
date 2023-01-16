@@ -19,7 +19,13 @@
     <string name="raporty">RAPORTY</string>
     <string name="raporty_opis">Sposób wyświetlenia raportów</string>
     <string name="raporty_kategorie">WEDŁUG KATEGORII</string>
+    <string name="raporty_summary">PODSUMOWANIE</string>
     <string name="raporty_pracownicy">WSZYSTKIE</string>
+
+    <string name="podsumowanie">PODSUMOWANIE</string>
+    <string name="podsumowanie_opis">Wybierz rodzaj podsumowania</string>
+    <string name="podsumowanie_zadanie">WEDŁUG ZADAŃ</string>
+    <string name="podsumowanie_pracownik">WEDŁUG PRACOWNIKA</string>
 
     <string name="logout_title">Do you want to logout?</string>
     <string name="logout_button">Logout</string>

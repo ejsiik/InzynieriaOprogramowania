@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RaportRodzajActivity">
+    tools:context=".PodsumowanieRodzajActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/raporty"
+        android:text="@string/podsumowanie"
         android:textAlignment="center"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -23,7 +23,7 @@
 
     <TextView
         android:id="@+id/opis"
-        android:text="@string/raporty_opis"
+        android:text="@string/podsumowanie_opis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -34,63 +34,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView"/>
 
-        <LinearLayout
-            android:id="@+id/ll1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/opis"
-            app:layout_constraintBottom_toTopOf="@id/ll2">
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/opis"
+        app:layout_constraintBottom_toTopOf="@id/ll2">
 
-            <Button
-                android:id="@+id/button_category"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginBottom="60dp"
-                android:padding="10dp"
-                android:textSize="24sp"
-                android:text="@string/raporty_kategorie"
-                android:background="@drawable/rounded_corner_all"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/button_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="60dp"
+            android:padding="10dp"
+            android:textSize="24sp"
+            android:text="@string/podsumowanie_zadanie"
+            android:background="@drawable/rounded_corner_all"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ll2"
-        app:layout_constraintBottom_toTopOf="@id/ll3">
-
-        <Button
-            android:id="@+id/button_summary"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="60dp"
-            android:padding="10dp"
-            android:textSize="24sp"
-            android:text="@string/raporty_summary"
-            android:background="@drawable/rounded_corner_all"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll2">
+        app:layout_constraintTop_toBottomOf="@id/ll1">
 
         <Button
-            android:id="@+id/button_all"
+            android:id="@+id/button_2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="30dp"
@@ -99,12 +76,12 @@
             android:layout_marginBottom="60dp"
             android:padding="10dp"
             android:background="@drawable/rounded_corner_all"
-            android:text="@string/raporty_pracownicy"
+            android:text="@string/podsumowanie_pracownik"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintTop_toBottomOf="@+id/button_category" />
-    </LinearLayout>
 
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
