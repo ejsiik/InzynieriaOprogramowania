@@ -44,20 +44,29 @@ data class RunningTasksResponse(val tasks: List<Task>)
 @Serializable
 data class ChangeTaskStatusResponse(val task: Task)
 
-@Serializable 
-data class getDoneTasksFromCurrentUserResponse(val tasks: List<Task>)
+@Serializable
+data class GetDoneTasksFromCurrentUserResponse(val tasks: List<Task>)
 
 @Serializable
-data class getDoneTasksFromAllUsersResponse(val tasks: List<Task>)
+data class GetDoneTasksFromAllUsersResponse(val tasks: List<Task>)
 
 @Serializable
-data class getAllDoneFromOneTaskResponse(val tasks: List<Task>)
+data class GetAllDoneFromOneTaskResponse(val tasks: List<Task>)
 
 @Serializable
-data class getMeanFromTaskResponse(val tasks: List<Task>)
+data class GetMeanFromTaskResponse(val tasks: List<Task>)
 
 @Serializable
-data class getBestTimeEndedResponse(val tasks: List<Task>)
+data class GetBestTimeEndedResponse(val tasks: List<Task>)
+
+@Serializable
+data class TasksHierarchyName(val tasks: List<Task>)
+
+typealias TasksHierarchyCategory = Map<String, TasksHierarchyName>
+typealias TasksHierarchy = Map<String, TasksHierarchyCategory>
+
+@Serializable
+data class GetDoneTasksFromCurrentUserHierarchyResponse(val tasks: TasksHierarchy)
 
 object BackendClient {
     private var host = "https://ktogdziekiedy.scuroguardiano.net/"
@@ -158,7 +167,20 @@ object BackendClient {
             }
         }
 
-        val parsed: getDoneTasksFromCurrentUserResponse = response.body()
+        val parsed: GetDoneTasksFromCurrentUserResponse = response.body()
+        return parsed.tasks
+    }
+
+    suspend fun getDoneTasksFromCurrentUserHierarchy(): TasksHierarchy {
+        val response = client.get(host) {
+            url {
+                appendPathSegments("tasks", "me", "done", "hierarchy")
+            }
+            headers {
+                append(HttpHeaders.Authorization, "Bearer $authToken")
+            }
+        }
+        val parsed: GetDoneTasksFromCurrentUserHierarchyResponse = response.body()
         return parsed.tasks
     }
 
@@ -172,7 +194,7 @@ object BackendClient {
             }
         }
 
-        val parsed: getDoneTasksFromAllUsersResponse = response.body()
+        val parsed: GetDoneTasksFromAllUsersResponse = response.body()
         return parsed.tasks
     }
 
@@ -186,7 +208,7 @@ object BackendClient {
             }
         }
 
-        val parsed: getAllDoneFromOneTaskResponse = response.body()
+        val parsed: GetAllDoneFromOneTaskResponse = response.body()
         return parsed.tasks
     }
 
@@ -200,7 +222,7 @@ object BackendClient {
             }
         }
 
-        val parsed: getMeanFromTaskResponse = response.body()
+        val parsed: GetMeanFromTaskResponse = response.body()
         return parsed.tasks
     }
 
@@ -214,7 +236,7 @@ object BackendClient {
             }
         }
 
-        val parsed: getBestTimeEndedResponse = response.body()
+        val parsed: GetBestTimeEndedResponse = response.body()
         return parsed.tasks
     }
 

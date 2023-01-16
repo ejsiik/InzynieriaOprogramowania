@@ -4,7 +4,7 @@ import HttpException from '../http-exception.js';
 import { addTask } from './add-task.js';
 import { changeTaskStatus } from './change-task-status.js';
 import { getCurrentUser } from './get-current-user.js';
-import { listRunningTasksForUserRoute, getDoneTasksFromCurrentUserRoute, getDoneTasksFromAllUsersRoute, getAllDoneFromOneTaskRoute, getMeanFromTaskRoute, getBestTimeEndedRoute } from './tasks.js';
+import { listRunningTasksForUserRoute, getDoneTasksFromCurrentUserRoute, getDoneTasksFromAllUsersRoute, getAllDoneFromOneTaskRoute, getMeanFromTaskRoute, getBestTimeEndedRoute, getDoneTasksFromCurrentUserHierachyRoute } from './tasks.js';
 import { loginRoute } from './login.js';
 import { findUser } from '../functions/user.js';
 
@@ -34,6 +34,8 @@ router.put("/running-tasks/:taskId/change-status", changeTaskStatus);
 
 // // return all tasks from one user with times
 router.get("/tasks/me/done", getDoneTasksFromCurrentUserRoute);
+
+router.get("/tasks/me/done/hierarchy", getDoneTasksFromCurrentUserHierachyRoute);
 
 router.use(async (req, res, next) => {
   const user = await findUser(res.locals.userId);

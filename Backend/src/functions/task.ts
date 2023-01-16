@@ -7,6 +7,18 @@ interface ITaskWithTime extends Task {
   duration: string;
 }
 
+interface IHierarchy {
+  [key: string]: IHierarchyCategoryEntry;
+}
+
+interface IHierarchyCategoryEntry {
+  [key: string]: IHierarchyNameEntry;
+}
+
+interface IHierarchyNameEntry {
+  tasks: Task[];
+}
+
 const repository = AppDataSource.getRepository(Task);
 
 export async function createTask(category: string, name: string, userId: number) {
@@ -45,6 +57,24 @@ export async function getDoneTasksFromCurrentUser(userId: number) {
     t.duration = formatTimespan(t.endTime!.getTime() - t.createdAt.getTime())
   })
   return tasks;
+}
+
+export async function getDoneTasksFromCurrentUserHierachy(userId: number) {
+  const tasks = await repository.findBy({ userId, endTime: Not(IsNull()) }) as ITaskWithTime[];
+
+  const hierarchy = {} as IHierarchy;
+  tasks.forEach(t => {
+    t.duration = formatTimespan(t.endTime!.getTime() - t.createdAt.getTime())
+    if (!(t.category in hierarchy)) {
+      hierarchy[t.category] = {}
+    }
+    if (!(t.name in hierarchy[t.category])) {
+      hierarchy[t.category][t.name] = { tasks: [] }
+    }
+    hierarchy[t.category][t.name].tasks.push(t);
+  })
+
+  return hierarchy;
 }
 
 export async function getAllDoneFromOneTask(category: string, name: string) {
