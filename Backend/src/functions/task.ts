@@ -1,6 +1,11 @@
 import { IsNull, Not } from "typeorm";
 import { AppDataSource } from "../data-source.js";
+import HttpException from "../http-exception.js";
 import Task from "../models/task.entity.js";
+
+interface ITaskWithTime extends Task {
+  duration: string;
+}
 
 const repository = AppDataSource.getRepository(Task);
 
@@ -18,8 +23,10 @@ export async function listRunningTasksForUser(userId: number) {
 }
 
 export async function changeToDone(taskId: number) {
-  const task = await repository.findOneBy({ id: taskId });
+  const task = await repository.findOneBy({ id: taskId }) as ITaskWithTime;
+  if(!task) throw new HttpException(404, "Task Not Found")
   task.endTime = new Date();
+  task.duration = formatTimespan(task.endTime!.getTime() - task.createdAt.getTime());
   await repository.save(task);
   return task;
 }
@@ -33,7 +40,10 @@ export async function getDoneTasksFromAllUsers() {
 }
 
 export async function getDoneTasksFromCurrentUser(userId: number) {
-  const tasks = await repository.findBy({ userId, endTime: Not(IsNull()) });
+  const tasks = await repository.findBy({ userId, endTime: Not(IsNull()) }) as ITaskWithTime[];
+  tasks.forEach(t => {
+    t.duration = formatTimespan(t.endTime!.getTime() - t.createdAt.getTime())
+  })
   return tasks;
 }
 
@@ -41,7 +51,10 @@ export async function getAllDoneFromOneTask(category: string, name: string) {
   const tasks = await repository.find({ 
     where: { category , name, endTime: Not(IsNull()) },
     relations: [ 'user' ]
-  });
+  }) as ITaskWithTime[];
+  tasks.forEach(t => {
+    t.duration = formatTimespan(t.endTime!.getTime() - t.createdAt.getTime())
+  })
   return tasks;
 }
 

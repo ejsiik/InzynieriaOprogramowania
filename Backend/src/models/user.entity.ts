@@ -14,7 +14,6 @@ export default class User {
   @Column()
   password: string;
 
-  @Exclude()
   @Column()
   isAdmin: boolean;
 

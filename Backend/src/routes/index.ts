@@ -43,16 +43,16 @@ router.use(async (req, res, next) => {
 
   next();
 });
-// // return all done tasks for all users with times
+// return all done tasks for all users with times
 router.get("/tasks/done", getDoneTasksFromAllUsersRoute);
 
-// // return all done from one task
+// return all done from one task
 router.get("/tasks/done/:category/:name", getAllDoneFromOneTaskRoute);
 
-// // return mean from one task
+// return mean from one task
 router.get("/tasks/done/:category/:name/mean", getMeanFromTaskRoute);
 
-// // retrun best time ended task
+// retrun best time ended task
 router.get("/tasks/done/:category/:name/best", getBestTimeEndedRoute);
 
 export default router;
