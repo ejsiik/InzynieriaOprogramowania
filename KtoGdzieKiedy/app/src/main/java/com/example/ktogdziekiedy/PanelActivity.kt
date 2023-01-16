@@ -70,6 +70,9 @@ class PanelActivity : AppCompatActivity() {
         myDialog.show()
         myDialog.popupLogout.setOnClickListener {
             startActivity(Intent(this@PanelActivity, MainActivity::class.java))
+            GlobalScope.launch {
+                BackendClient.logout()
+            }
         }
     }
 
