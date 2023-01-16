@@ -12,12 +12,7 @@
     app:cardCornerRadius="15dp"
     app:cardElevation="8dp">
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@color/white"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="10dp"/>
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textViewContent"

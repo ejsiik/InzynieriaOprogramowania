@@ -2,6 +2,11 @@ package com.example.ktogdziekiedy.model
 
 object Data {
 
+    val workers = listOf(
+        Worker("XD", "OK"),
+        Worker("ASD", "dsaS")
+    )
+
     val raports = listOf(
         Raport("Raport 1"),
         Raport("Raport 2"),

@@ -16,3 +16,10 @@ export async function listRunningTasksForUser(userId: number) {
   const tasks = await repository.findBy({ userId, endTime: IsNull() });
   return tasks;
 }
+
+export async function changeToDone(taskId: number) {
+  const task = await repository.findOneBy({ id: taskId });
+  task.endTime = new Date();
+  await repository.save(task);
+  return task;
+}

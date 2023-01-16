@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ktogdziekiedy.ItemsViewModel
@@ -34,6 +35,7 @@ class RunningTasksAdapter (private val mList: List<ItemsViewModel>) : RecyclerVi
 
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(ItemsViewModel)
+            Toast.makeText(holder.itemView.context, "Start task", Toast.LENGTH_LONG).show()
         }
     }
 

@@ -12,31 +12,29 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ktogdziekiedy.*
 import com.example.ktogdziekiedy.model.Item
 
-class ItemsAdapter(
+class ItemsAdapter2(
     private val context: Context,
     private var items: List<Item>
 ) :
-    RecyclerView.Adapter<ItemsAdapter.ItemViewHolder>() {
+    RecyclerView.Adapter<ItemsAdapter2.Item2ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        return ItemViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Item2ViewHolder {
+        return Item2ViewHolder(
             LayoutInflater.from(context).inflate(R.layout.item_item, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: Item2ViewHolder, position: Int) {
         val itemValue = items[position].content
-        val viewModel = ItemsViewModel(itemValue)
-        val bundle = Bundle()
-        bundle.putString("name", itemValue)
+        //val viewModel = ItemsViewModel(itemValue)
+        //val bundle = Bundle()
+        //bundle.putString("name", itemValue)
         if (itemValue != null) {
             holder.bind(items[position])
             holder.itemView.setOnClickListener {
-                Toast.makeText(context, "Start " + itemValue + " task", Toast.LENGTH_LONG).show()
-                val intent = Intent(context, SecondActivity::class.java)
-                intent.putExtras(
-                    bundle
-                ) //pass the object to the next activity
+                //Toast.makeText(context, "Start " + itemValue + " task", Toast.LENGTH_LONG).show()
+                val intent = Intent(context, RaportSzczegolyActivity::class.java)
+                //intent.putExtras(bundle)
                 context.startActivity(intent)
             }
         }
@@ -46,7 +44,7 @@ class ItemsAdapter(
         return items.size
     }
 
-    class ItemViewHolder(private val view: View) :
+    class Item2ViewHolder(private val view: View) :
         RecyclerView.ViewHolder(view) {
 
         fun bind(item: Item) {
