@@ -35,7 +35,7 @@ class CategoriesAdapter(
         fun bind(category: Category) {
             view.findViewById<TextView>(R.id.categoryName).text = category.name
             view.findViewById<RecyclerView>(R.id.recyclerView).adapter =
-                ItemsAdapter(view.context, category.listOfItems)
+                ItemsAdapter(view.context, category.listOfItems, category.name)
         }
     }
 }
