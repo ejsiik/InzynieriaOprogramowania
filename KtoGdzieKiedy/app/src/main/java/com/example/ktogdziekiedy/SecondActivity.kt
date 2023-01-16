@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import backendconnection.BackendClient
 import backendconnection.Task
 import com.example.ktogdziekiedy.adapter.RunningTasksAdapter
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +33,7 @@ class SecondActivity : AppCompatActivity() {
             } else {
             Log.e("Error", "Bundle is null.")}
         //val data = ArrayList<String>()
-        /*GlobalScope.launch {
+        GlobalScope.launch {
             val tasks = BackendClient.runningTasks()
             tasks.forEach {
                 Log.d(it.name,"xx")
@@ -41,8 +43,10 @@ class SecondActivity : AppCompatActivity() {
             val adapter = RunningTasksAdapter(tasks)
 
             // Setting the Adapter with the recyclerview
-            recyclerview.adapter = adapter
-        }*/
+            withContext(Dispatchers.Main) {
+                recyclerview.adapter = adapter
+            }
+        }
 
     }
 }

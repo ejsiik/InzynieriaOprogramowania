@@ -37,7 +37,7 @@ class ItemsAdapter(
             holder.bind(items[position])
             holder.itemView.setOnClickListener {
                 Toast.makeText(context, "Start " + itemValue + " task", Toast.LENGTH_LONG).show()
-                val intent = Intent(context, SecondActivity::class.java)
+                val intent = Intent(context, PanelActivity::class.java)
                 intent.putExtras(
                     bundle
                 ) //pass the object to the next activity
