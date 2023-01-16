@@ -35,12 +35,8 @@ class SecondActivity : AppCompatActivity() {
         //val data = ArrayList<String>()
         GlobalScope.launch {
             val tasks = BackendClient.runningTasks()
-            tasks.forEach {
-                Log.d(it.name,"xx")
-
-            }
             // This will pass the ArrayList to our Adapter
-            val adapter = RunningTasksAdapter(tasks)
+            val adapter = RunningTasksAdapter(tasks, this@SecondActivity)
 
             // Setting the Adapter with the recyclerview
             withContext(Dispatchers.Main) {
