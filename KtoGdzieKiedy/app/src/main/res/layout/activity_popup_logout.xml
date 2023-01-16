@@ -20,7 +20,7 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/login_title" />
+                android:text="@string/logout_title" />
             <Button
                 android:id="@+id/popupLogout"
                 android:layout_width="fill_parent"

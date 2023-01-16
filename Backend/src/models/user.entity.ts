@@ -14,6 +14,10 @@ export default class User {
   @Column()
   password: string;
 
+  @Exclude()
+  @Column()
+  isAdmin: boolean;
+
   @OneToMany(() => Task, o => o.user)
   tasks: Task[];
 }
