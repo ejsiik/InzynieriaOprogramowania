@@ -3,14 +3,18 @@ package com.example.ktogdziekiedy.adapter
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import backendconnection.BackendClient
 import com.example.ktogdziekiedy.*
 import com.example.ktogdziekiedy.model.Item
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class ItemsAdapter(
     private val context: Context,
@@ -37,6 +41,10 @@ class ItemsAdapter(
                 intent.putExtras(
                     bundle
                 ) //pass the object to the next activity
+                GlobalScope.launch {
+                    BackendClient.addTask(itemValue, itemValue)
+                    Log.d("xx", BackendClient.runningTasks().toString())
+                }
                 context.startActivity(intent)
             }
         }
