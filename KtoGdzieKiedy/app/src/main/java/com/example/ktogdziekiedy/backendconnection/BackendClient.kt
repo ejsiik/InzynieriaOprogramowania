@@ -60,7 +60,7 @@ data class getMeanFromTaskResponse(val tasks: List<Task>)
 data class getBestTimeEndedResponse(val tasks: List<Task>)
 
 object BackendClient {
-    private var host = "http://localhost"
+    private var host = "https://ktogdziekiedy.scuroguardiano.net"
     // TOKEN jest PUBLICZNY więc można go przechować gdzieś,
     // żeby można było logować się potem tylko pinem,
     // póki nie nastąpi wciśnięcie przycisku logout
