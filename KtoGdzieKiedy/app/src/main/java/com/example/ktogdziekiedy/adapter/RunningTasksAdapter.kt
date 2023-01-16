@@ -33,7 +33,8 @@ class RunningTasksAdapter (private var mList: List<Task>, private val activity: 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val ItemsViewModel = mList[position].name
+        var completed = mList[position]
+        val ItemsViewModel = "${completed.category}: ${completed.name}"
 
 
         // sets the text to the textview from our itemHolder class
@@ -41,14 +42,14 @@ class RunningTasksAdapter (private var mList: List<Task>, private val activity: 
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(ItemsViewModel)
             GlobalScope.launch {
-                BackendClient.changeTaskStatus(mList[position].id)
+                BackendClient.changeTaskStatus(completed.id)
             }.invokeOnCompletion {
                 mList = mList.filter {
-                    it.id != mList[position].id
+                    it.id != completed.id
                 }
                 activity.runOnUiThread {
                     notifyDataSetChanged()
-                    Toast.makeText(holder.itemView.context, "Task "+ mList[position].name+" ended", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(holder.itemView.context, "Task "+ completed.name+" ended", Toast.LENGTH_SHORT).show()
                 }
             }
         }
