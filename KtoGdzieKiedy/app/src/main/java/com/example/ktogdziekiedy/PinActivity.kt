@@ -27,8 +27,17 @@ class PinActivity : AppCompatActivity() {
 
         val password = findViewById<TextInputEditText>(R.id.pin_input_value)
         logInButton.setOnClickListener {
-            logInButton.setOnClickListener {
-                GlobalScope.launch {
+            GlobalScope.launch {
+                val isEmpty = password.getText().toString()
+                if (isEmpty.equals("")) {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(
+                            this@PinActivity,
+                            "Password can not be empty",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                } else {
                     if (bundle != null) {
                         val login = "${bundle.getString("login")}"
                         try {
@@ -45,7 +54,10 @@ class PinActivity : AppCompatActivity() {
                                 ).show()
                                 val intent = Intent(this@PinActivity, MainActivity::class.java)
                                 startActivity(intent)
-                                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                                overridePendingTransition(
+                                    R.anim.slide_in_right,
+                                    R.anim.slide_out_left
+                                )
                             }
                         }
                     }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.view.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,10 +22,15 @@ class MainActivity : AppCompatActivity() {
 
         submitButton.setOnClickListener {
             bundle.putString("login", login.text.toString())
-            val intent = Intent(this@MainActivity, PinActivity::class.java)
-            intent.putExtras(bundle)
-            startActivity(intent)
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            if (login.text.isEmpty()) {
+                Toast.makeText(this@MainActivity, "Username can not be empty", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                val intent = Intent(this@MainActivity, PinActivity::class.java)
+                intent.putExtras(bundle)
+                startActivity(intent)
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            }
         }
     }
 }
