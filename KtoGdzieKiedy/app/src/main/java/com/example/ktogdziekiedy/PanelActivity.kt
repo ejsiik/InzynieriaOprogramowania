@@ -8,12 +8,21 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TextView
+import backendconnection.BackendClient
 import kotlinx.android.synthetic.main.activity_popup_logout.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class PanelActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_panel)
+
+        GlobalScope.launch {
+            val userName = findViewById<TextView>(R.id.textView2)
+            userName.text = "Hello "+BackendClient.me().login
+        }
         onClickListener()
     }
 
@@ -22,6 +31,7 @@ class PanelActivity : AppCompatActivity() {
         val imageSecond = findViewById<ImageView>(R.id.ivSecond)
         val imageStats = findViewById<ImageView>(R.id.ivStats)
         val imageLogout = findViewById<ImageView>(R.id.ivLogout)
+
 
         imageFirst.setOnClickListener {
             openFirstActivity()
