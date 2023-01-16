@@ -11,10 +11,11 @@ import backendconnection.BackendClient
 import backendconnection.Task
 import com.example.ktogdziekiedy.ItemsViewModel
 import com.example.ktogdziekiedy.R
+import com.example.ktogdziekiedy.SecondActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class RunningTasksAdapter (private var mList: List<Task>): RecyclerView.Adapter<RunningTasksAdapter.ViewHolder>() {
+class RunningTasksAdapter (private var mList: List<Task>, private val activity: SecondActivity): RecyclerView.Adapter<RunningTasksAdapter.ViewHolder>() {
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val textView: TextView = itemView.findViewById(R.id.textViewContent)
@@ -32,23 +33,25 @@ class RunningTasksAdapter (private var mList: List<Task>): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val ItemsViewModel = mList[position].name
+        var completed = mList[position]
+        val ItemsViewModel = "${completed.category}: ${completed.name}"
 
 
         // sets the text to the textview from our itemHolder class
         holder.textView.text = ItemsViewModel//.toString()
-        val adapter = RunningTasksAdapter(mList)
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(ItemsViewModel)
             GlobalScope.launch {
-                BackendClient.changeTaskStatus(mList[position].id)
+                BackendClient.changeTaskStatus(completed.id)
             }.invokeOnCompletion {
                 mList = mList.filter {
-                    it.id != mList[position].id
+                    it.id != completed.id
                 }
-                adapter.notifyItemRemoved(position)
+                activity.runOnUiThread {
+                    notifyDataSetChanged()
+                    Toast.makeText(holder.itemView.context, "Task "+ completed.name+" ended", Toast.LENGTH_SHORT).show()
+                }
             }
-            Toast.makeText(holder.itemView.context, "Task "+ mList[position].name+" ended", Toast.LENGTH_SHORT).show()
         }
     }
 

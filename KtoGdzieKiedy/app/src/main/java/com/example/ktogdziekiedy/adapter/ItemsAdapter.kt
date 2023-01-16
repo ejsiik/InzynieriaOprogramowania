@@ -18,7 +18,8 @@ import kotlinx.coroutines.launch
 
 class ItemsAdapter(
     private val context: Context,
-    private var items: List<Item>
+    private var items: List<Item>,
+    private val categoryName: String
 ) :
     RecyclerView.Adapter<ItemsAdapter.ItemViewHolder>() {
 
@@ -42,7 +43,7 @@ class ItemsAdapter(
                     bundle
                 ) //pass the object to the next activity
                 GlobalScope.launch {
-                    BackendClient.addTask(itemValue, itemValue)
+                    BackendClient.addTask(categoryName, itemValue)
                     Log.d("xx", BackendClient.runningTasks().toString())
                 }
                 context.startActivity(intent)
