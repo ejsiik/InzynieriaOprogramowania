@@ -6,7 +6,7 @@ import { signJWT } from "./jwt.js";
 
 const repository = AppDataSource.getRepository(User);
 
-export async function createUser(login: string, plainPassword: string) {
+export async function createUser(login: string, plainPassword: string, isAdmin: boolean) {
   if (await doesUserExists(login)) {
     throw new HttpException(409, "Użytkownik już istnieje.");
   }
@@ -14,7 +14,7 @@ export async function createUser(login: string, plainPassword: string) {
   const user = new User();
   const password = await hash(plainPassword, 10);
 
-  repository.merge(user, { login, password });
+  repository.merge(user, { login, password, isAdmin });
 
   await repository.save(user);
   return user;

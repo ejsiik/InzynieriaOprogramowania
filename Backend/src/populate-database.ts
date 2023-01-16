@@ -7,9 +7,9 @@ const manager = AppDataSource.manager;
 
 try {
   const users = await Promise.all([
-    createUser("jaidananaia", "12345678"),
-    createUser("kleoncarles", "zaq1@WSX"),
-    createUser("adamjanika", "dezadek")
+    createUser("jaidananaia", "12345678", true),
+    createUser("kleoncarles", "zaq1@WSX", false),
+    createUser("adamjanika", "dezadek", false)
   ]);
 
   console.log(`Utworzono ${users.length} użytkowików:`);
