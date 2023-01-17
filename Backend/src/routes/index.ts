@@ -4,7 +4,7 @@ import HttpException from '../http-exception.js';
 import { addTask } from './add-task.js';
 import { changeTaskStatus } from './change-task-status.js';
 import { getCurrentUser } from './get-current-user.js';
-import { listRunningTasksForUserRoute, getDoneTasksFromCurrentUserRoute, getDoneTasksFromAllUsersRoute, getAllDoneFromOneTaskRoute, getMeanFromTaskRoute, getBestTimeEndedRoute, getDoneTasksFromCurrentUserHierachyRoute } from './tasks.js';
+import { listRunningTasksForUserRoute, getDoneTasksFromCurrentUserRoute, getDoneTasksFromAllUsersRoute, getAllDoneFromOneTaskRoute, getMeanFromTaskRoute, getBestTimeEndedRoute, getDoneTasksFromCurrentUserHierachyRoute, getDoneTasksFromAllUserHierarchyRoute } from './tasks.js';
 import { loginRoute } from './login.js';
 import { findUser } from '../functions/user.js';
 import { getDoneTasksFromAllUserHierarchy } from '../functions/task.js';
@@ -46,7 +46,7 @@ router.use(async (req, res, next) => {
 
   next();
 });
-router.get("/tasks/done/hierarchy", getDoneTasksFromAllUserHierarchy);
+router.get("/tasks/done/hierarchy", getDoneTasksFromAllUserHierarchyRoute);
 
 // return all done tasks for all users with times
 router.get("/tasks/done", getDoneTasksFromAllUsersRoute);

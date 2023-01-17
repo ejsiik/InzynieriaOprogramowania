@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { listRunningTasksForUser, getDoneTasksFromAllUsers,
-   getDoneTasksFromCurrentUser, getAllDoneFromOneTask, getMeanFromTask, getBestTimeEnded, getDoneTasksFromCurrentUserHierachy  } from "../functions/task.js";
+   getDoneTasksFromCurrentUser, getAllDoneFromOneTask, getMeanFromTask, getBestTimeEnded, getDoneTasksFromCurrentUserHierachy, getDoneTasksFromAllUserHierarchy  } from "../functions/task.js";
 import { instanceToPlain } from 'class-transformer';
 
 export async function listRunningTasksForUserRoute(req: Request, res: Response){
@@ -23,6 +23,11 @@ export async function getDoneTasksFromCurrentUserHierachyRoute(req: Request, res
   res.json({ tasks: instanceToPlain(tasks) });
 }
 
+export async function getDoneTasksFromAllUserHierarchyRoute(req: Request, res: Response) {
+  const tasks = await getDoneTasksFromAllUserHierarchy();
+  res.json({ tasks: instanceToPlain(tasks) });
+}
+
 export async function getAllDoneFromOneTaskRoute(req: Request, res: Response) {
   const { category, name } = req.params;
   const tasks = await getAllDoneFromOneTask(category, name);
@@ -40,3 +45,4 @@ export async function getBestTimeEndedRoute(req: Request, res: Response) {
   const bestTime = await getBestTimeEnded(category, name);
   res.json({ bestTime });
 }
+
