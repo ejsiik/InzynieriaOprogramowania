@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { listRunningTasksForUser, getDoneTasksFromAllUsers,
-   getDoneTasksFromCurrentUser, getAllDoneFromOneTask, getMeanFromTask, getBestTimeEnded  } from "../functions/task.js";
+   getDoneTasksFromCurrentUser, getAllDoneFromOneTask, getMeanFromTask, getBestTimeEnded, getDoneTasksFromCurrentUserHierachy, getDoneTasksFromAllUserHierarchy  } from "../functions/task.js";
 import { instanceToPlain } from 'class-transformer';
 
 export async function listRunningTasksForUserRoute(req: Request, res: Response){
@@ -15,6 +15,16 @@ export async function getDoneTasksFromCurrentUserRoute(req: Request, res: Respon
 
 export async function getDoneTasksFromAllUsersRoute(req: Request, res: Response) {
   const tasks = await getDoneTasksFromAllUsers();
+  res.json({ tasks: instanceToPlain(tasks) });
+}
+
+export async function getDoneTasksFromCurrentUserHierachyRoute(req: Request, res: Response) {
+  const tasks = await getDoneTasksFromCurrentUserHierachy(res.locals.userId);
+  res.json({ tasks: instanceToPlain(tasks) });
+}
+
+export async function getDoneTasksFromAllUserHierarchyRoute(req: Request, res: Response) {
+  const tasks = await getDoneTasksFromAllUserHierarchy();
   res.json({ tasks: instanceToPlain(tasks) });
 }
 
@@ -35,3 +45,4 @@ export async function getBestTimeEndedRoute(req: Request, res: Response) {
   const bestTime = await getBestTimeEnded(category, name);
   res.json({ bestTime });
 }
+
