@@ -68,6 +68,9 @@ typealias TasksHierarchy = Map<String, TasksHierarchyCategory>
 @Serializable
 data class GetDoneTasksFromCurrentUserHierarchyResponse(val tasks: TasksHierarchy)
 
+@Serializable
+data class GetDoneTasksFromAllUsersHierarchyResponse(val tasks: TasksHierarchy)
+
 object BackendClient {
     private var host = "https://ktogdziekiedy.scuroguardiano.net/"
     // TOKEN jest PUBLICZNY więc można go przechować gdzieś,
@@ -181,6 +184,19 @@ object BackendClient {
             }
         }
         val parsed: GetDoneTasksFromCurrentUserHierarchyResponse = response.body()
+        return parsed.tasks
+    }
+
+    suspend fun getDoneTasksFromAllUsersHierarchy(): TasksHierarchy {
+        val response = client.get(host) {
+            url {
+                appendPathSegments("tasks", "done", "hierarchy")
+            }
+            headers {
+                append(HttpHeaders.Authorization, "Bearer $authToken")
+            }
+        }
+        val parsed: GetDoneTasksFromAllUsersHierarchyResponse = response.body()
         return parsed.tasks
     }
 

@@ -1,82 +1,55 @@
 package com.example.ktogdziekiedy
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.RecyclerView
-import com.ahmadhamwi.tabsync.TabbedListMediator
-import com.example.ktogdziekiedy.adapter.CategoriesAdapter2
-import com.example.ktogdziekiedy.model.Category
-import com.example.ktogdziekiedy.model.Item
-import com.google.android.material.tabs.TabLayout
+import backendconnection.BackendClient
+import backendconnection.Task
+import com.example.ktogdziekiedy.adapter.MainItemAdapter
+import com.example.ktogdziekiedy.databinding.ActivityRaportKategoriaBinding
+import com.example.ktogdziekiedy.model.Data
+import com.example.ktogdziekiedy.model.MainModel
+import com.example.ktogdziekiedy.model.SubModel
+import kotlinx.android.synthetic.main.item_category.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+
 
 class PodsumowanieZadaniaActivity : AppCompatActivity() {
 
-    private lateinit var tabLayout: TabLayout
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var binding: ActivityRaportKategoriaBinding
+    var job: Job? = null
 
-    private val categories = mutableListOf(
-        Category(
-            "Phone",
-            Item("LCD"),
-            Item("Battery"),
-            Item("USB port"),
-            Item("Camera"),
-            Item("Speaker"),
-            Item("Software")
-        ),
-        Category(
-            "Computer",
-            Item("CPU"),
-            Item("GPU"),
-            Item("RAM"),
-            Item("PSU"),
-            Item("Motherboard"),
-            Item("Software"),
-            Item("Clean up")
-        ),
-        Category(
-            "Console",
-            Item("Controller"),
-            Item("Disc"),
-            Item("HDMI controller"),
-            Item("PSU"),
-            Item("Clean up"),
-            Item("Software")
-        ),
-    )
-
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_podsumowanie_zadania)
+        job = GlobalScope.launch {
+            val viewData = mutableListOf<MainModel>()
+            val tasks = BackendClient.getDoneTasksFromAllUsersHierarchy()
+            tasks.forEach {
+                    category ->
+                val main = MainModel(category.key, mutableListOf<SubModel>())
+                category.value.forEach {
+                        name ->
+                    val sub = SubModel(name.key, mutableListOf<Task>())
+                    name.value.tasks.forEach {
+                            task ->
+                        sub.tasks.add(task)
+                    }
+                    main.subItemModel.add(sub)
+                }
+                viewData.add(main)
+            }
 
-        initViews()
-        initTabLayout()
-        initRecycler()
-        initMediator()
-    }
-
-    private fun initViews() {
-        tabLayout = findViewById(R.id.tabLayout)
-        recyclerView = findViewById(R.id.recyclerView)
-    }
-
-    private fun initTabLayout() {
-        for (category in categories) {
-            tabLayout.addTab(tabLayout.newTab().setText(category.name))
+            runOnUiThread {
+                binding = ActivityRaportKategoriaBinding.inflate(layoutInflater)
+                setContentView(binding.root)
+                binding.kategoriaRv.adapter = MainItemAdapter(this@PodsumowanieZadaniaActivity, viewData)
+            }
         }
+        super.onCreate(savedInstanceState)
     }
 
-    private fun initRecycler() {
-        recyclerView.adapter = CategoriesAdapter2(this, categories)
-    }
-
-    private fun initMediator() {
-        TabbedListMediator(
-            recyclerView,
-            tabLayout,
-            categories.indices.toList()
-        ).attach()
+    override fun onDestroy() {
+        super.onDestroy()
+        job?.cancel()
     }
 }

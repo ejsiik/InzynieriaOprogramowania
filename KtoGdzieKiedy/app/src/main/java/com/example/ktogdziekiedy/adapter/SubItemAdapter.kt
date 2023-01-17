@@ -20,7 +20,7 @@ class SubItemAdapter(private val context: Context, private val subItemModel: Lis
         holder.binding.apply {
             val subItemM = subItemModel[position]
             subItemText.text = subItemM.subCategory
-            val subSubItemAdapter = SubSubItemAdapter(context, subItemM.raport)
+            val subSubItemAdapter = SubSubItemAdapter(context, subItemM.tasks)
             subSubItemRv.adapter = subSubItemAdapter
 
             subItemText.setOnClickListener {

@@ -29,23 +29,4 @@ object Data {
         Raport("Raport 19"),
         Raport("Raport 20")
     )
-
-    private val subCat = listOf(
-        SubModel("sub_category 1", raports),
-        SubModel("sub_category 2", raports),
-        SubModel("sub_category 3", raports),
-        SubModel("sub_category 4", raports),
-        SubModel("sub_category 5", raports),
-        SubModel("sub_category 6", raports),
-        SubModel("sub_category 7", raports),
-        SubModel("sub_category 8", raports),
-        SubModel("sub_category 9", raports),
-        SubModel("sub_category 10", raports)
-    )
-
-    val cat = listOf(
-        MainModel("category 1", subCat),
-        MainModel("category 2", subCat),
-        MainModel("category 3", subCat)
-    )
 }
