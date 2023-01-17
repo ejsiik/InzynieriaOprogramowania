@@ -62,18 +62,34 @@ export async function getDoneTasksFromCurrentUser(userId: number) {
 export async function getDoneTasksFromCurrentUserHierachy(userId: number) {
   const tasks = await repository.findBy({ userId, endTime: Not(IsNull()) }) as ITaskWithTime[];
 
+  const hierarchy = taskListToHierarchy(tasks);
+
+  return hierarchy;
+}
+
+export async function getDoneTasksFromAllUserHierarchy() {
+  const tasks = await repository.find({
+    where: { endTime: Not(IsNull()) },
+    relations: [ 'user' ]
+  }) as ITaskWithTime[];
+
+  const hierarchy = taskListToHierarchy(tasks);
+
+  return hierarchy;
+}
+
+function taskListToHierarchy(tasks: ITaskWithTime[]) {
   const hierarchy = {} as IHierarchy;
   tasks.forEach(t => {
-    t.duration = formatTimespan(t.endTime!.getTime() - t.createdAt.getTime())
+    t.duration = formatTimespan(t.endTime!.getTime() - t.createdAt.getTime());
     if (!(t.category in hierarchy)) {
-      hierarchy[t.category] = {}
+      hierarchy[t.category] = {};
     }
     if (!(t.name in hierarchy[t.category])) {
-      hierarchy[t.category][t.name] = { tasks: [] }
+      hierarchy[t.category][t.name] = { tasks: [] };
     }
     hierarchy[t.category][t.name].tasks.push(t);
-  })
-
+  });
   return hierarchy;
 }
 

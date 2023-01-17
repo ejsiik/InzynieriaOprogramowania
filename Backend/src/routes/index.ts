@@ -7,6 +7,7 @@ import { getCurrentUser } from './get-current-user.js';
 import { listRunningTasksForUserRoute, getDoneTasksFromCurrentUserRoute, getDoneTasksFromAllUsersRoute, getAllDoneFromOneTaskRoute, getMeanFromTaskRoute, getBestTimeEndedRoute, getDoneTasksFromCurrentUserHierachyRoute } from './tasks.js';
 import { loginRoute } from './login.js';
 import { findUser } from '../functions/user.js';
+import { getDoneTasksFromAllUserHierarchy } from '../functions/task.js';
 
 const router = express.Router();
 
@@ -45,6 +46,8 @@ router.use(async (req, res, next) => {
 
   next();
 });
+router.get("/tasks/done/hierarchy", getDoneTasksFromAllUserHierarchy);
+
 // return all done tasks for all users with times
 router.get("/tasks/done", getDoneTasksFromAllUsersRoute);
 
@@ -56,5 +59,6 @@ router.get("/tasks/done/:category/:name/mean", getMeanFromTaskRoute);
 
 // retrun best time ended task
 router.get("/tasks/done/:category/:name/best", getBestTimeEndedRoute);
+
 
 export default router;
