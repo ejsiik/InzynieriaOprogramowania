@@ -2,50 +2,43 @@ package com.example.ktogdziekiedy.model
 
 object Data {
 
-    val workers = listOf(
-        Worker("XD", "OK"),
-        Worker("ASD", "dsaS")
-    )
-
     val raports = listOf(
-        Raport("Raport 1"),
-        Raport("Raport 2"),
-        Raport("Raport 3"),
-        Raport("Raport 4"),
-        Raport("Raport 5"),
-        Raport("Raport 6"),
-        Raport("Raport 7"),
-        Raport("Raport 8"),
-        Raport("Raport 9"),
-        Raport("Raport 10"),
-        Raport("Raport 11"),
-        Raport("Raport 12"),
-        Raport("Raport 13"),
-        Raport("Raport 14"),
-        Raport("Raport 15"),
-        Raport("Raport 16"),
-        Raport("Raport 17"),
-        Raport("Raport 18"),
-        Raport("Raport 19"),
-        Raport("Raport 20")
+        Raport("Raport")
     )
 
-    private val subCat = listOf(
-        SubModel("sub_category 1", raports),
-        SubModel("sub_category 2", raports),
-        SubModel("sub_category 3", raports),
-        SubModel("sub_category 4", raports),
-        SubModel("sub_category 5", raports),
-        SubModel("sub_category 6", raports),
-        SubModel("sub_category 7", raports),
-        SubModel("sub_category 8", raports),
-        SubModel("sub_category 9", raports),
-        SubModel("sub_category 10", raports)
+    private val subCat1 = listOf(
+        SubModel("LCD", raports),
+        SubModel("Battery", raports),
+        SubModel("USB port", raports),
+        SubModel("Camera", raports),
+        SubModel("Speaker", raports),
+        SubModel("Software", raports)
     )
 
-    val cat = listOf(
-        MainModel("category 1", subCat),
-        MainModel("category 2", subCat),
-        MainModel("category 3", subCat)
+    private val subCat2 = listOf(
+        SubModel("CPU", raports),
+        SubModel("GPU", raports),
+        SubModel("RAM", raports),
+        SubModel("PSU", raports),
+        SubModel("Motherboard", raports),
+        SubModel("Software", raports),
+        SubModel("Clean up", raports)
     )
+
+    private val subCat3 = listOf(
+        SubModel("Controller", raports),
+        SubModel("Disc", raports),
+        SubModel("HDMI controller", raports),
+        SubModel("PSU", raports),
+        SubModel("Clean up", raports),
+        SubModel("Software", raports)
+    )
+
+    val cat = mutableListOf(
+        MainModel("PHONE", subCat1),
+        MainModel("COMPUTER", subCat2),
+        MainModel("CONSOLE", subCat3)
+    )
+
+    //val users = mutableListOf()
 }
