@@ -47,7 +47,10 @@ export async function getDoneTasksFromAllUsers() {
   const tasks = await repository.find({
     where: { endTime: Not(IsNull()) },
     relations: [ 'user' ]
-  });
+  }) as ITaskWithTime[];
+  tasks.forEach(t => {
+    t.duration = formatTimespan(t.endTime!.getTime() - t.createdAt.getTime())
+  })
   return tasks;
 }
 
