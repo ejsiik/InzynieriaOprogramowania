@@ -5,15 +5,11 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import backendconnection.Task
 import com.example.ktogdziekiedy.R
-import com.example.ktogdziekiedy.RaportPracownikActivity
 import com.example.ktogdziekiedy.RaportSzczegolyActivity
 import com.example.ktogdziekiedy.databinding.LayoutRaportSubSubItemBinding
-import com.example.ktogdziekiedy.model.Raport
 import com.example.ktogdziekiedy.store.ReportStore
 
 class SubSubItemAdapter(private val context: Context, private val tasks: List<Task>) : RecyclerView.Adapter<SubSubItemAdapter.ViewHolder>() {

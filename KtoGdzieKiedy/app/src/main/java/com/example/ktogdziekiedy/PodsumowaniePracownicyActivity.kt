@@ -1,11 +1,10 @@
 package com.example.ktogdziekiedy
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import backendconnection.BackendClient
-import backendconnection.Task
 import com.example.ktogdziekiedy.adapter.PodsumowaniePracownikAdapter
 import com.example.ktogdziekiedy.store.ReportStore
 import kotlinx.android.synthetic.main.activity_raport_pracownik.*

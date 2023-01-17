@@ -1,16 +1,12 @@
 package com.example.ktogdziekiedy.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import backendconnection.Task
 import com.example.ktogdziekiedy.R
-import com.example.ktogdziekiedy.model.Raport
 import kotlinx.android.synthetic.main.layout_raport_item.view.*
-import kotlinx.coroutines.NonDisposableHandle.parent
 
 class RaportPracownikAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

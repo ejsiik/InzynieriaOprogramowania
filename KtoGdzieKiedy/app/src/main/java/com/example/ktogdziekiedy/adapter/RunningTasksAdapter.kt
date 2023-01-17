@@ -5,11 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import backendconnection.BackendClient
 import backendconnection.Task
-import com.example.ktogdziekiedy.ItemsViewModel
 import com.example.ktogdziekiedy.R
 import com.example.ktogdziekiedy.SecondActivity
 import kotlinx.coroutines.GlobalScope
@@ -34,7 +32,7 @@ class RunningTasksAdapter (private var mList: List<Task>, private val activity: 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var completed = mList[position]
-        val ItemsViewModel = "${completed.category}: ${completed.name}"
+        val ItemsViewModel = "${completed.category}: ${completed.name} start: ${completed.createdAt.substring(11,16)}"
 
 
         // sets the text to the textview from our itemHolder class

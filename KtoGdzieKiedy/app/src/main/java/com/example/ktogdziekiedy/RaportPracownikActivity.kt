@@ -1,16 +1,13 @@
 package com.example.ktogdziekiedy
 
-import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import backendconnection.BackendClient
 import backendconnection.BackendClient.getDoneTasksFromCurrentUser
 import com.example.ktogdziekiedy.adapter.RaportPracownikAdapter
-import com.example.ktogdziekiedy.model.Data
-import com.example.ktogdziekiedy.model.Raport
 import com.example.ktogdziekiedy.store.ReportStore
 import kotlinx.android.synthetic.main.activity_raport_pracownik.*
 import kotlinx.coroutines.GlobalScope

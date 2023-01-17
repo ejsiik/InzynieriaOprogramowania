@@ -23,6 +23,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Item"
-        android:backgroundTint="@color/purple_200"/>
+        android:backgroundTint="@color/purple_200"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/white"/>
 
 </androidx.cardview.widget.CardView>

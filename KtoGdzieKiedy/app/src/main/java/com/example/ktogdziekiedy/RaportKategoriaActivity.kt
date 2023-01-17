@@ -1,15 +1,13 @@
 package com.example.ktogdziekiedy
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import backendconnection.BackendClient
 import backendconnection.Task
 import com.example.ktogdziekiedy.adapter.MainItemAdapter
 import com.example.ktogdziekiedy.databinding.ActivityRaportKategoriaBinding
-import com.example.ktogdziekiedy.model.Data
 import com.example.ktogdziekiedy.model.MainModel
 import com.example.ktogdziekiedy.model.SubModel
-import kotlinx.android.synthetic.main.item_category.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch

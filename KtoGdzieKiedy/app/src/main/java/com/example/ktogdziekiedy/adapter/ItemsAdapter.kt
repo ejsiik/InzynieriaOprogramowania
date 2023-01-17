@@ -11,7 +11,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import backendconnection.BackendClient
-import com.example.ktogdziekiedy.*
+import com.example.ktogdziekiedy.ItemsViewModel
+import com.example.ktogdziekiedy.PanelActivity
+import com.example.ktogdziekiedy.R
 import com.example.ktogdziekiedy.model.Item
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -31,20 +33,13 @@ class ItemsAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val itemValue = items[position].content
-        val viewModel = ItemsViewModel(itemValue)
-        val bundle = Bundle()
-        bundle.putString("name", itemValue)
         if (itemValue != null) {
             holder.bind(items[position])
             holder.itemView.setOnClickListener {
                 Toast.makeText(context, "Start " + itemValue + " task", Toast.LENGTH_LONG).show()
                 val intent = Intent(context, PanelActivity::class.java)
-                intent.putExtras(
-                    bundle
-                ) //pass the object to the next activity
                 GlobalScope.launch {
                     BackendClient.addTask(categoryName, itemValue)
-                    Log.d("xx", BackendClient.runningTasks().toString())
                 }
                 context.startActivity(intent)
             }

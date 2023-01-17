@@ -1,11 +1,10 @@
 package com.example.ktogdziekiedy
 
 import android.content.Intent
-import android.opengl.Visibility
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import backendconnection.BackendClient
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

@@ -1,13 +1,11 @@
 package com.example.ktogdziekiedy
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import com.example.ktogdziekiedy.model.Raport
+import androidx.appcompat.app.AppCompatActivity
 import com.example.ktogdziekiedy.store.ReportStore
-import org.w3c.dom.Text
 
 class RaportSzczegolyActivity : AppCompatActivity() {
 
