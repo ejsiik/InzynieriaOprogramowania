@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import backendconnection.Task
 import com.example.ktogdziekiedy.R
 import com.example.ktogdziekiedy.model.Worker
 import kotlinx.android.synthetic.main.layout_pracownik_item.view.*
@@ -14,8 +15,8 @@ import kotlinx.coroutines.NonDisposableHandle.parent
 
 class PodsumowaniePracownikAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var items: List<Worker> = ArrayList()
-    lateinit var onItemClick: (Worker) -> Unit
+    private var items: List<String> = ArrayList()
+    lateinit var onItemClick: (String) -> Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return PracownicyViewHolder(
@@ -41,17 +42,15 @@ class PodsumowaniePracownikAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder
         return items.size
     }
 
-    fun submitList(workerList: List<Worker>) {
+    fun submitList(workerList: List<String>) {
         items = workerList
     }
 
     inner class PracownicyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val imie = itemView.raport_imie
-        val nazwisko = itemView.raport_nazwisko
+        val id = itemView.raport_imie
 
-        fun bind(worker: Worker) {
-            imie.setText(worker.imie)
-            nazwisko.setText(worker.nazwisko)
+        fun bind(worker: String) {
+            id.text = worker
         }
     }
 }

@@ -12,7 +12,7 @@ import com.example.ktogdziekiedy.model.Raport
 import kotlinx.android.synthetic.main.layout_raport_item.view.*
 import kotlinx.coroutines.NonDisposableHandle.parent
 
-class RaportPracownikAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DanegoAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var items: List<Task> = ArrayList()
     lateinit var onItemClick: (Task) -> Unit
