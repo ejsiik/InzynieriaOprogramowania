@@ -2,6 +2,8 @@ package com.example.ktogdziekiedy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import backendconnection.BackendClient
 import com.example.ktogdziekiedy.adapter.MainItemAdapter
 import com.example.ktogdziekiedy.databinding.ActivityRaportKategoriaBinding
 import com.example.ktogdziekiedy.model.Data
@@ -16,6 +18,6 @@ class RaportKategoriaActivity : AppCompatActivity() {
         binding = ActivityRaportKategoriaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.kategoriaRv.adapter = MainItemAdapter(this, Data.cat)
+        binding.kategoriaRv.adapter = MainItemAdapter(this@RaportKategoriaActivity, Data.cat)
     }
 }

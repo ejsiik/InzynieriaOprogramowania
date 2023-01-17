@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberPassword"
             android:imeOptions="actionDone"
-            android:maxLength="4"
+            android:maxLength="8"
             android:textSize="24sp"/>
 
     </com.google.android.material.textfield.TextInputLayout>

@@ -1,12 +1,12 @@
 import express from 'express';
 import { verifyJWT } from '../functions/jwt.js';
-import { listRunningTasksForUser } from '../functions/task.js';
 import HttpException from '../http-exception.js';
 import { addTask } from './add-task.js';
 import { changeTaskStatus } from './change-task-status.js';
 import { getCurrentUser } from './get-current-user.js';
-import { listRunningTasksForUserRoute } from './list-tasks.js';
+import { listRunningTasksForUserRoute, getDoneTasksFromCurrentUserRoute, getDoneTasksFromAllUsersRoute, getAllDoneFromOneTaskRoute, getMeanFromTaskRoute, getBestTimeEndedRoute } from './tasks.js';
 import { loginRoute } from './login.js';
+import { findUser } from '../functions/user.js';
 
 const router = express.Router();
 
@@ -31,5 +31,28 @@ router.get("/running-tasks", listRunningTasksForUserRoute);
 router.get("/me", getCurrentUser);
 
 router.put("/running-tasks/:taskId/change-status", changeTaskStatus);
+
+// // return all tasks from one user with times
+router.get("/tasks/me/done", getDoneTasksFromCurrentUserRoute);
+
+router.use(async (req, res, next) => {
+  const user = await findUser(res.locals.userId);
+  if (!user.isAdmin) {
+    throw new HttpException(403, "Operacja wymaga uprawnień.");
+  }
+
+  next();
+});
+// return all done tasks for all users with times
+router.get("/tasks/done", getDoneTasksFromAllUsersRoute);
+
+// return all done from one task
+router.get("/tasks/done/:category/:name", getAllDoneFromOneTaskRoute);
+
+// return mean from one task
+router.get("/tasks/done/:category/:name/mean", getMeanFromTaskRoute);
+
+// retrun best time ended task
+router.get("/tasks/done/:category/:name/best", getBestTimeEndedRoute);
 
 export default router;

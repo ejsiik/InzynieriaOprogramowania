@@ -1,4 +1,4 @@
-package com.example.ktogdziekiedy.backendconnection
+package backendconnection
 
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -15,7 +15,7 @@ data class LoginData(val login: String, val password: String)
 data class LoginResponse(val token: String)
 
 @Serializable
-data class User(val id: Int, val login: String)
+data class User(val id: Int, val login: String, val isAdmin: Boolean)
 
 @Serializable
 data class MeResponse(val user: User)
@@ -30,7 +30,9 @@ data class Task(
     val userId: Int,
     val endTime: String?,
     val id: Int,
-    val createdAt: String
+    val createdAt: String,
+    val duration: String? = null,
+    val user: User? = null
 )
 
 @Serializable
@@ -42,9 +44,32 @@ data class RunningTasksResponse(val tasks: List<Task>)
 @Serializable
 data class ChangeTaskStatusResponse(val task: Task)
 
+@Serializable
+data class GetDoneTasksFromCurrentUserResponse(val tasks: List<Task>)
+
+@Serializable
+data class GetDoneTasksFromAllUsersResponse(val tasks: List<Task>)
+
+@Serializable
+data class GetAllDoneFromOneTaskResponse(val tasks: List<Task>)
+
+@Serializable
+data class GetMeanFromTaskResponse(val tasks: List<Task>)
+
+@Serializable
+data class GetBestTimeEndedResponse(val tasks: List<Task>)
+
+@Serializable
+data class TasksHierarchyName(val tasks: List<Task>)
+
+typealias TasksHierarchyCategory = Map<String, TasksHierarchyName>
+typealias TasksHierarchy = Map<String, TasksHierarchyCategory>
+
+@Serializable
+data class GetDoneTasksFromCurrentUserHierarchyResponse(val tasks: TasksHierarchy)
 
 object BackendClient {
-    private var host = "https://ktogdziekiedy.scuroguardiano.net"
+    private var host = "https://ktogdziekiedy.scuroguardiano.net/"
     // TOKEN jest PUBLICZNY więc można go przechować gdzieś,
     // żeby można było logować się potem tylko pinem,
     // póki nie nastąpi wciśnięcie przycisku logout
@@ -132,6 +157,88 @@ object BackendClient {
         return parsed.task
     }
 
+    suspend fun getDoneTasksFromCurrentUser(id: Int): List<Task> {
+        val response = client.get(host) {
+            url {
+                appendPathSegments("tasks", "me", "done")
+            }
+            headers {
+                append(HttpHeaders.Authorization, "Bearer $authToken")
+            }
+        }
+
+        val parsed: GetDoneTasksFromCurrentUserResponse = response.body()
+        return parsed.tasks
+    }
+
+    suspend fun getDoneTasksFromCurrentUserHierarchy(): TasksHierarchy {
+        val response = client.get(host) {
+            url {
+                appendPathSegments("tasks", "me", "done", "hierarchy")
+            }
+            headers {
+                append(HttpHeaders.Authorization, "Bearer $authToken")
+            }
+        }
+        val parsed: GetDoneTasksFromCurrentUserHierarchyResponse = response.body()
+        return parsed.tasks
+    }
+
+    suspend fun getDoneTasksFromAllUsers(): List<Task> {
+        val response = client.get(host) {
+            url {
+                appendPathSegments("tasks", "done")
+            }
+            headers {
+                append(HttpHeaders.Authorization, "Bearer $authToken")
+            }
+        }
+
+        val parsed: GetDoneTasksFromAllUsersResponse = response.body()
+        return parsed.tasks
+    }
+
+    suspend fun getAllDoneFromOneTask(category: String, name: String): List<Task> {
+        val response = client.get(host) {
+            url {
+                appendPathSegments("tasks", "done", category, name)
+            }
+            headers {
+                append(HttpHeaders.Authorization, "Bearer $authToken")
+            }
+        }
+
+        val parsed: GetAllDoneFromOneTaskResponse = response.body()
+        return parsed.tasks
+    }
+
+    suspend fun getMeanFromTask(category: String, name: String): List<Task> {
+        val response = client.get(host) {
+            url {
+                appendPathSegments("tasks", "done", category, name, "mean")
+            }
+            headers {
+                append(HttpHeaders.Authorization, "Bearer $authToken")
+            }
+        }
+
+        val parsed: GetMeanFromTaskResponse = response.body()
+        return parsed.tasks
+    }
+
+    suspend fun getBestTimeEnded(category: String, name: String): List<Task> {
+        val response = client.get(host) {
+            url {
+                appendPathSegments("tasks", "done", category, name, "best")
+            }
+            headers {
+                append(HttpHeaders.Authorization, "Bearer $authToken")
+            }
+        }
+
+        val parsed: GetBestTimeEndedResponse = response.body()
+        return parsed.tasks
+    }
 
     fun logout() {
         authToken = ""
