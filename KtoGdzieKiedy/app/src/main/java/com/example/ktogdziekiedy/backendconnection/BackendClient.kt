@@ -54,10 +54,10 @@ data class GetDoneTasksFromAllUsersResponse(val tasks: List<Task>)
 data class GetAllDoneFromOneTaskResponse(val tasks: List<Task>)
 
 @Serializable
-data class GetMeanFromTaskResponse(val tasks: List<Task>)
+data class GetMeanFromTaskResponse(val meanTime: String)
 
 @Serializable
-data class GetBestTimeEndedResponse(val tasks: List<Task>)
+data class GetBestTimeEndedResponse(val bestTime: String)
 
 @Serializable
 data class TasksHierarchyName(val tasks: List<Task>)
@@ -228,7 +228,7 @@ object BackendClient {
         return parsed.tasks
     }
 
-    suspend fun getMeanFromTask(category: String, name: String): List<Task> {
+    suspend fun getMeanFromTask(category: String, name: String): String {
         val response = client.get(host) {
             url {
                 appendPathSegments("tasks", "done", category, name, "mean")
@@ -239,10 +239,10 @@ object BackendClient {
         }
 
         val parsed: GetMeanFromTaskResponse = response.body()
-        return parsed.tasks
+        return parsed.meanTime
     }
 
-    suspend fun getBestTimeEnded(category: String, name: String): List<Task> {
+    suspend fun getBestTimeEnded(category: String, name: String): String {
         val response = client.get(host) {
             url {
                 appendPathSegments("tasks", "done", category, name, "best")
@@ -253,7 +253,7 @@ object BackendClient {
         }
 
         val parsed: GetBestTimeEndedResponse = response.body()
-        return parsed.tasks
+        return parsed.bestTime
     }
 
     fun logout() {
