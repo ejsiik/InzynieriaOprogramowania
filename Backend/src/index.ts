@@ -6,11 +6,14 @@ import morgan from 'morgan';
 import { AppDataSource } from "./data-source.js";
 import HttpException from "./http-exception.js";
 import mainRouter from "./routes/index.js";
+import cors from "cors";
 
 export default async function main() {
   await AppDataSource.initialize();
 
   const app = express();
+
+  app.use(cors());
 
   app.use(express.json());
 
