@@ -44,7 +44,7 @@ export default async function main() {
     return res.status(500).json({ error: "Internal Server Error" });
   });
 
-  app.listen(1337, "0.0.0.0", () => {
+  app.listen(1338, "0.0.0.0", () => {
     console.log("App is listening on 0.0.0.0:1337");
   });
 }

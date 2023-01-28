@@ -7,7 +7,8 @@ import { getCurrentUser } from './get-current-user.js';
 import { listRunningTasksForUserRoute, getDoneTasksFromCurrentUserRoute, getDoneTasksFromAllUsersRoute, getAllDoneFromOneTaskRoute, getMeanFromTaskRoute, getBestTimeEndedRoute, getDoneTasksFromCurrentUserHierachyRoute, getDoneTasksFromAllUserHierarchyRoute } from './tasks.js';
 import { loginRoute } from './login.js';
 import { findUser } from '../functions/user.js';
-import { getDoneTasksFromAllUserHierarchy } from '../functions/task.js';
+import { getDoneTasksFromAllUserHierarchy, getTasksToAdd } from '../functions/task.js';
+import { getTasksToAddRoute } from './get-tasks-to-add.js';
 
 const router = express.Router();
 
@@ -30,6 +31,8 @@ router.post("/tasks", addTask);
 router.get("/running-tasks", listRunningTasksForUserRoute);
 
 router.get("/me", getCurrentUser);
+
+router.get("/tasks", getTasksToAddRoute);
 
 router.put("/running-tasks/:taskId/change-status", changeTaskStatus);
 

@@ -1,6 +1,7 @@
 import { IsNull, Not } from "typeorm";
 import { AppDataSource } from "../data-source.js";
 import HttpException from "../http-exception.js";
+import TaskToAdd from "../models/task-to-add.js";
 import Task from "../models/task.entity.js";
 
 interface ITaskWithTime extends Task {
@@ -19,7 +20,23 @@ interface IHierarchyNameEntry {
   tasks: Task[];
 }
 
+interface ITaskToAddList {
+  [key: string]: string[]
+}
+
 const repository = AppDataSource.getRepository(Task);
+
+export async function getTasksToAdd(){
+  const tasks = await AppDataSource.manager.find(TaskToAdd);
+  const hierarchy = {} as ITaskToAddList;
+  tasks.forEach(t => {
+    if (!(t.category in hierarchy)) {
+      hierarchy[t.category] = [];
+    }
+    hierarchy[t.category].push(t.name);
+  });
+  return hierarchy;
+}
 
 export async function createTask(category: string, name: string, userId: number) {
   const task = new Task();

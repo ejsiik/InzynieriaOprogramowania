@@ -1,5 +1,6 @@
 import { AppDataSource } from "./data-source.js";
 import { createUser } from "./functions/user.js";
+import TaskToAdd from "./models/task-to-add.js";
 import Task from "./models/task.entity.js";
 
 await AppDataSource.initialize();
@@ -16,6 +17,46 @@ try {
   console.log(users.map(u => u.login).join("\n"));
 }
 catch {}
+
+function createTaskToAdd(category: string, name: string) {
+  const task = new TaskToAdd();
+  manager.merge(TaskToAdd, task, { category, name });
+
+  return task;
+}
+try {
+  const tasks = [
+    createTaskToAdd("Phone", "LCD"),
+    createTaskToAdd("Phone", "Battery"),
+    createTaskToAdd("Phone", "USB port"),
+    createTaskToAdd("Phone", "Camera"),
+    createTaskToAdd("Phone", "Speaker"),
+    createTaskToAdd("Phone", "Software"),
+    createTaskToAdd("Phone", "Clean up"),
+    createTaskToAdd("Computer", "CPU"),
+    createTaskToAdd("Computer", "GPU"),
+    createTaskToAdd("Computer", "RAM"),
+    createTaskToAdd("Computer", "PSU"),
+    createTaskToAdd("Computer", "Motherboard"),
+    createTaskToAdd("Computer", "Software"),
+    createTaskToAdd("Computer", "Clean up"),
+    createTaskToAdd("Console", "Controller"),
+    createTaskToAdd("Console", "Disc"),
+    createTaskToAdd("Console", "HDMI controller"),
+    createTaskToAdd("Console", "PSU"),
+    createTaskToAdd("Console", "Software"),
+    createTaskToAdd("Console", "Clean up"),
+  ];
+
+
+  await manager.save(tasks);
+
+  console.log(`Utworzono ${tasks.length} zadań:`);
+  console.log(tasks.map(t => `${t.category}:${t.name}`).join("\n"));
+}
+catch (err) {}
+
+
 
 function createTask(category: string, name: string, userId: number, createdAt?: Date, endTime?: Date) {
   const task = new Task();
